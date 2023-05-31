@@ -1,0 +1,200 @@
+<html>
+
+<!--
+Nercisa!!! HTML
+
+0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+-->
+
+<head>
+<meta charset="UTF-8">
+<title>Narcissa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="Narcissa0.js"></script>
+<script type="text/javascript" src="NarcissaNew.js"></script>
+	<style>
+		body {
+			font-family: Roboto Mono, Arial, Helvetica, sans-serif;
+			background-color: rgb(157, 176, 69);
+		}
+
+		#endgame-popup {
+			visibility: hidden;
+
+			background-color: white;
+
+			position: absolute;
+
+			top: 50%;
+			left: 50%;
+			
+			transform: translate(-50%, -50%);
+			z-index: 999;
+
+			font-size: 40px;
+
+			padding: 10px 20px;
+			border-radius: 20px;
+		}
+
+		#wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			z-index: -1;
+		}
+		#game-details {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		#gameTitle {
+			color: rgb(100, 66, 18);
+			font-size: 20px;
+			font-weight: 500;
+		}
+
+		#authors {
+			color: white;	
+		}
+
+		#center {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			position: absolute;
+			transform: translate(-50%, -50%);
+
+			text-align: center;
+
+			justify-content: space-around;
+		}
+
+		#gameArea {
+			border: 5px solid rgb(100, 66, 18);
+			border-radius: 9px;
+
+			background-color: rgb(175, 153, 123);
+			display: flex;
+		}
+
+		#sidebar {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			row-gap: 20px;
+
+			width: 70px;
+			border-left: 5px solid rgb(100, 66, 18);
+		}
+
+		#swamp-canvas {
+
+			background-color: white;
+			display: inline;
+		}
+		
+		button {
+			color: white; 
+			background-color: rgb(100, 66, 18);
+
+			border: none;
+			font-family: Roboto Mono, Arial, Helvetica, sans-serif;
+			padding: 10px;
+		
+			transition: 0.15s background-color;
+		}
+
+		button:hover {
+			background-color: rgb(108, 79, 38);
+		}
+
+		button:active {
+			background-color: rgb(132, 113, 88);
+		}
+
+		.stats-label {
+			color: white;
+		}
+
+		.stats-display {
+			background-color: rgb(175, 153, 123);
+		
+			border: 5px solid rgb(100, 66, 18);
+			color: white;
+
+			padding: 10px;
+
+			border-radius: 5px;
+
+			display: inline-block;
+
+			min-width: 30px;
+		}
+
+		.stats-div {
+			margin-top: 10px;
+		}
+
+		#stats-row {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			column-gap: 20px;
+		}
+	</style>
+</head>
+
+
+<body onload="onLoad()">
+	<!--EndGame PopUp-->
+	<div id="endgame-popup">
+		<span id="endgame-message"></span>
+		<br>
+		Your score was <span id="final-score-span"></span>
+	</div>	
+
+	<div id="center">
+		<!--Game Details-->
+		<div id="game-details">
+			<span id="gameTitle">Narcissa</span>
+			<br>	
+			<span id="authors">José Soares (60196), Tomás Marta (63439)</span>
+		</div>
+		<!--Game-->
+		<div id="gameArea">
+			<canvas id="swamp-canvas" width="1120" height="640">
+				Your browser doesn't support the HTML5 CANVAS tag.
+			</canvas>
+			<section id="sidebar">
+				<button id="pause-btn" onclick="changeGameStatus()">Pause</button>
+				<button id="difficulty-btn" onclick="changeDifficulty()">Change Diff</button>
+				<button id="reset-btn" onclick="reset()">Reset</button>
+			</section>
+
+		</div>
+		<!--Stats row-->
+		<div id="stats-row">
+			<!--Time Display-->
+			<div class="stats-div">
+				<span class="stats-label">Timer:</span>
+				<span class="stats-display" id="clock-display">00:00</span>
+			</div>
+			<!--Score Display-->
+			<div class="stats-div">
+				<span class="stats-label">Score:</span>
+				<span class="stats-display" id="score-display">5</span>
+			</div>
+			<!--Mode Display-->
+			<div class="stats-div">
+				<span class="stats-label">Difficulty:</span>
+				<span class="stats-display" id="mode-display">EASY</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
