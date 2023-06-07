@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+Nercisa!!! HTML
+
+0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+-->
+<head>
+<meta charset="UTF-8">
+<meta title="author" content="tsyr">
+<meta title="description" content="snakeBALLS">
+<title>Narcissa</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="Narcissa0.js"></script>
+<script type="text/javascript" src="Narcissa.js"></script>
+	<style>
+		body {
+			font-family: Roboto Mono, Arial, Helvetica, sans-serif;
+			background-color: rgb(157, 176, 69);
+		}
+
+		/* Welcome Screen */ 
+
+		.popup {
+			background-color: rgb(157, 176, 69);
+
+			padding: 10px 20px;
+
+			border-radius: 10px;
+			border: 5px solid rgb(109, 122, 50);
+
+			z-index: 999;
+		}
+
+		#start-title {
+			color: white;
+			margin-top: 0;
+			margin-bottom: -30px; 
+		}
+
+		.popup-btn {
+			margin-bottom: 10px;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		/* Centre Div */
+
+		.centred-div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			position: absolute;
+			transform: translate(-50%, -50%);
+
+			text-align: center;
+
+			justify-content: space-around;
+		}
+
+		/* Top Row */ 
+
+		#top-row {
+			display: flex;
+			flex-direction: row;
+
+			justify-content: space-between;
+		}
+
+		#game-title {
+			color: rgb(100, 66, 18);
+			font-size: 20px;
+			font-weight: 500;
+		}
+
+		#game-details {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		#authors {
+			color: white;	
+		}
+
+		.input-area {
+			padding: 10px 15px;
+		}
+
+		#hidden-flex {
+			visibility: hidden;
+		}
+
+		#player-name-input {
+			border-radius: 5px;
+			border: none;
+			box-shadow: inset 0 0 3px  #888;
+
+			margin-bottom: 0;
+
+			transition: .18s outline;
+		}
+
+		#player-name-input:focus {
+			outline: none;
+		}
+
+		/* Game Area */
+
+		#gameArea {
+			display: flex;
+			flex-direction: row;
+
+			border: 5px solid rgb(100, 66, 18);
+			border-radius: 9px;
+
+			background-color: rgb(175, 153, 123);
+		}
+
+		#swamp-canvas {
+			background-color: white;
+			display: inline;
+		}
+
+		/* Sidebar */
+
+		#sidebar {
+			display: flex;
+			flex-direction: column;
+
+			justify-content: space-around;
+			row-gap: 20px;
+
+			width: 70px;
+			border-left: 5px solid rgb(100, 66, 18);
+		}
+
+		button {
+			color: white; 
+			background-color: rgb(100, 66, 18);
+
+			border: none;
+			font-family: Roboto Mono, Arial, Helvetica, sans-serif;
+			padding: 10px;
+		
+			transition: 0.15s background-color;
+		}
+
+		button:hover {
+			background-color: rgb(108, 79, 38);
+		
+			cursor: pointer;
+		}
+
+		button:active {
+			background-color: rgb(132, 113, 88);
+		}
+
+		/* Stats */
+
+		#stats-row {
+			display: flex;
+			flex-direction: row;
+
+			justify-content: center;
+			column-gap: 20px;
+		}
+
+		.stat-div {
+			margin-top: 10px;
+		}
+
+		.stats-label {
+			color: white;
+		}
+
+		.stats-display {
+			display: inline-block;
+
+			background-color: rgb(175, 153, 123);
+		
+			border: 3px solid rgb(100, 66, 18);
+
+			color: white;
+
+			padding: 10px;
+			border-radius: 5px;
+
+
+			min-width: 30px;
+		}
+
+		/* Leader Board */
+
+		#leader-popup {
+			display: none;
+			
+			z-index: 9999;
+		}
+
+		#leader-title {
+			color: white;
+			margin-top: 0;
+			margin-bottom: -10px;
+		}
+
+		.list-elem {
+			font-weight: 500;
+			font-size: 25px;
+		}
+	
+		/* End Game */
+
+		#endgame-popup {
+			display: none;
+			background-color: white;
+			position: absolute;
+
+			top: 50%;
+			left: 50%;
+			
+			transform: translate(-50%, -50%);
+			z-index: 999;
+
+			font-size: 40px;
+
+			padding: 10px 20px;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--Welcome Screen-->
+	<div class="centred-div popup" id="welcome-screen">
+		<h1 id="start-title">NARCISSA</h1>
+		<br>
+		<h3>Rules:</h3>
+		<ol>
+			<li>Get as many Berries as you can! (colored circle)</li>	
+			<li>If you eat a Berry of the same color as the ones
+				in your stomach you lose half of your tail. </li>
+			<li>You lose if you hit the Shrubs! (black squares)</li>
+		</ol>
+		<h3>Modes:</h3>
+		<ul>
+			<li>Manual: You have to play and win!</li>	
+			<li>Automatic: The game plays itself (tries to!)</li>
+		</ul>
+		<h3>Difficulty:</h3>
+		<ul>
+			<li>Easy: Get to 300 points as fast as you can and 
+					watch out for obstacles. 
+			</li>	
+			<li>Hard: Same goal as Easy Mode but the Shrubs expand faster and 
+					the Berries last shorter in the map. 
+			</li>
+		</ul>
+		<button class="popup-btn" onclick="startGame()">Start!</button>
+	</div>
+
+	<!--Leader Board Popup-->
+	<div class="centred-div popup" id="leader-popup">
+		<h1 id="leader-title">LEADER BOARD</h1>
+
+		<p id="no-scores">No Scores Yet. Go Play!</p>
+		<ol id="score-list">
+			<!--Generated with Javascript-->
+		</ol>
+		<button class="popup-btn" onclick="hideLeader()">Close</button>
+	</div>
+
+	<div class="centred-div">
+		<section id="top-row">
+			<!--Just for Centering the middle Flex Item-->		
+			<input class="input-area" id="hidden-flex" type="text">
+			<!--Game Details-->
+			<section id="game-details">
+				<span id="game-title">Narcissa</span>
+				<br>	
+				<span id="authors">José Soares (60196), Tomás Marta (63439)</span>
+			</section>
+			<!--Player Name-->
+			<section id="player-info">
+				<input class="input-area" id="player-name-input" type="text" placeholder="Your Name Here" maxlength="15">
+			</section>
+		</section>
+		<!--Game-->
+		<section id="gameArea">
+			<canvas id="swamp-canvas" width="1120" height="640">
+				Your browser doesn't support the HTML5 CANVAS tag.
+			</canvas>
+			<section id="sidebar">
+				<button id="pause-btn" onclick="changeGameStatus()">Pause</button>
+				<button id="mode-btn" onclick="changeMode()">Change Mode</button>
+				<button id="difficulty-btn" onclick="changeDifficulty()">Change Diff</button>
+				<button id="reset-btn" onclick="reset()">Reset</button>
+				<button id="leader-btn" onclick="getLeaderBoard()">Leader Board</button>
+			</section>
+		</section>
+		<!--Stats row-->
+		<section id="stats-row">
+			<!--Time Display-->
+			<div class="stat-div">
+				<span class="stats-label">Timer:</span>
+				<span class="stats-display" id="clock-display">00:00</span>
+			</div>
+			<!--Score Display-->
+			<div class="stat-div">
+				<span class="stats-label">Score:</span>
+				<span class="stats-display" id="score-display">5</span>
+			</div>
+			<!--Mode Display-->
+			<div class="stat-div">
+				<span class="stats-label">Mode:</span>
+				<span class="stats-display" id="mode-display">MANUAL</span>
+			</div>
+			<!--Diff Display-->
+			<div class="stat-div">
+				<span class="stats-label">Difficulty:</span>
+				<span class="stats-display" id="diff-display">EASY</span>
+			</div>
+		</section>
+	</div>
+
+	<!--EndGame PopUp-->
+	<div class="centred-div" id="endgame-popup">
+		<span id="endgame-message"></span>
+		<br>
+		Your score was <span id="final-score-span"></span>
+	</div>	
+</body>
+</html>
